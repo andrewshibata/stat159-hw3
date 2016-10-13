@@ -9,7 +9,8 @@ data:
 #tests: 
 
 #sources eda-script.R
-#eda:
+eda:
+	Rscript -e 'source("code/scripts/eda-script.R")''
 
 #sources regression-script.R
 #regression:
