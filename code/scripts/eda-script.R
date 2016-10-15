@@ -46,6 +46,7 @@ correlation_matrix
 sink()
 
 save(correlation_matrix,file='data/correlation_matrix.RData')
+save(all_summary,file='all_summary.RData')
 
 # Graph Output
 png('images/histogram-tv.png')

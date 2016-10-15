@@ -11,11 +11,11 @@ tests:
 
 #Exploratory Data Analysis
 eda:
-	Rscript -e code/scripts/eda-script.R data/Advertising.csv
+	Rscript code/scripts/eda-script.R data/Advertising.csv
 
 #sources regression-script.R
 regression:
-	Rscript code/scripts/regerssion-script.R data/Advertising.csv
+	Rscript code/scripts/regression-script.R data/Advertising.csv
 
 #generates report.pdf or report.html
 report/report.pdf:
