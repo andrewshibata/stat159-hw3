@@ -36,26 +36,25 @@ xtable(all_summary,caption='Summary Statistics for Advertising.csv')
 ```
 
 Additionally, here are the histograms of the distributions:
-
-```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
+Histogram of TV Budgets
+```{r,echo=FALSE,out.width='300px',message=FALSE,fig.align='center',eval=T,split=TRUE}
 knitr::include_graphics('../images/histogram-tv.png')
 ```
-Histogram of TV Budgets
 
-```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
+Histogram of Radio Budgets
+```{r,echo=FALSE,out.width='300px',message=FALSE,fig.align='center',eval=T,split=TRUE}
 knitr::include_graphics('../images/histogram-radio.png')
 ```
-Histogram of Radio Budgets
 
-```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
+Histogram of Newspaper Budgets
+```{r,echo=FALSE,out.width='300px',message=FALSE,fig.align='center',eval=T,split=TRUE}
 knitr::include_graphics('../images/histogram-newspaper.png')
 ```
-Histogram of Newspaper Budgets
 
-```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
+Histogram of Sales
+```{r,echo=FALSE,out.width='300px',message=FALSE,fig.align='center',eval=T,split=TRUE}
 knitr::include_graphics('../images/histogram-sales.png')
 ```
-Histogram of Sales
 
 #Methodology
 
@@ -96,6 +95,13 @@ The $$R^2$$ and RSE values for this model are small, indicating that linear regr
 
 _Regression of Sales by Radio_
 
+Similarly, coefficients can be found for Radio:
+```{r,echo=FALSE,results='asis'}
+radio_summary = summary(radio_fit)
+xtable(radio_summary$coefficients, caption = 'Single Regression: Sales ~ Radio')
+```
+
+And further regression parameters:
 ```{r,echo=FALSE, results='asis',message=FALSE}
 radio_table = matrix(nrow = 3, ncol = 2)
 Quantity = c("RSE", "R2", "F-stat")
@@ -103,8 +109,40 @@ radio_values = c(residual_std_error(radio_fit), r_squared(radio_fit), f_statisti
 radio_table[,1] = Quantity
 radio_table[,2] = radio_values
 colnames(radio_table) = c('Quantity', 'Value')
-xtable(radio_table, caption = "Quality Indices of Regression of Sales on Radio")
+xtable(radio_table, caption = "Regression Model Parameters: Sales ~ Radio")
 ```
+The RSE and $$R^2$$ are low for Radio as well.
+
+_Regression of Sales by Newspaper_
+
+Similarly, coefficients can be found for Newspaper:
+```{r,echo=FALSE,results='asis'}
+newspaper_summary = summary(newspaper_fit)
+xtable(newspaper_summary$coefficients, caption = 'Single Regression: Sales ~ Newspaper')
+```
+
+And further regression parameters:
+```{r,echo=FALSE, results='asis',message=FALSE}
+newspaper_table = matrix(nrow = 3, ncol = 2)
+Quantity = c("RSE", "R2", "F-stat")
+newspaper_values = c(residual_std_error(newspaper_fit), r_squared(newspaper_fit), f_statistic(newspaper_fit))
+newspaper_table[,1] = Quantity
+newspaper_table[,2] = newspaper_values
+colnames(newspaper_table) = c('Quantity', 'Value')
+xtable(radio_table, caption = "Regression Model Parameters: Sales ~ Newspaper")
+```
+
+For Newspaper the RSE and $$R^2$$ indicate that simple linear regression may not be applicable for the relationship between Sales and Newspaper.
+
+Here is the scatter plot with the least squares regression line:
+```{r,echo=FALSE,out.width='300px',message=FALSE,fig.align='center}
+knitr::include_graphics('../images/scatterplot-newspaper-sales.png')
+```
+The regression line does not seem to really fit the relationship between Newspaper and Sales so linear regresison may not be appropriate.
+
+##Multiple Linear Regression
+
+Unlike the 3 examples above, we can perform regression analysis on Sales by all 3 of TV, Radio, and Newspaper.
 
 
 #Conclusion
