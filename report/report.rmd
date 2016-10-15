@@ -1,0 +1,35 @@
+---
+title: "Stat159 Homework 3 Report"
+author: "Andrew Shibata"
+date: "October 14, 2016"
+output: pdf_document
+---
+
+```{r echo=FALSE}
+#Loading xtable package and setting up xtable and knitr formatting
+library(xtable)
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+
+#Loading in RData files
+load('../data/all_summary.RData')
+load('../data/regression.RData')
+load('../data/correlation-matrix.RData')
+source('../code/functions/regression-functions.R')
+```
+
+#Abstract
+This report replicates section 3.2 (Multiple Linear Regression) of the book *An Introduction to Statistical Learning*.
+
+Concepts covered by this assignment include performing multiple regression analysis in R and using the package testthat.
+
+#Introduction
+This report analyzes the effects of different types of advertisement media on the overall sales of of a product. In the last assignment we only looked at the linear regression for Sales by TV, but now we will additionally perform a multiple regression analysis with all 3 advertising factors. 
+
+#Data
+Similarly to Homework 2, this assignment deals with the *Advertising.csv* dataset. It contains information about the advertising budgets for *TV*, *Radio*, and *Newspaper* advertisements as well as the resulting *Sales* in 200 markets. 
+
+#Results
+
+
+#Conclusion
