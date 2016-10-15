@@ -26,7 +26,7 @@ sales_summary = c(sales_summary, var(advertising$Sales), sd(advertising$Sales))
 names(sales_summary)[7] = 'Variance'
 names(sales_summary)[8] = 'Standard Deviation'
 
-# Data Output
+# Combined Summary
 all_summary = matrix(ncol = 8, nrow = 4)
 all_summary[1,] = tv_summary
 all_summary[2,] = radio_summary
@@ -35,11 +35,17 @@ all_summary[4,] = sales_summary
 all_summary = data.frame(all_summary)
 rownames(all_summary) = c('TV', 'Radio', 'Newspaper', 'Sales')
 colnames(all_summary) = names(tv_summary)
+
+#Correlation matrix
+correlation_matrix = cor(advertising)
+
+#Data Output
 sink('data/eda-output.txt')
 all_summary
+correlation_matrix
 sink()
-save(all_summary, file = 'data/eda-output.txt')
 
+save(correlation_matrix,file='data/correlation_matrix.RData')
 
 # Graph Output
 png('images/histogram-tv.png')
