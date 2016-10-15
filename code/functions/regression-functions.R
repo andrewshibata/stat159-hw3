@@ -35,3 +35,13 @@ residual_std_error = function(lm_object) {
 	rse = sqrt(rss/(n-2))
 	return(rse)
 }
+
+#calculates r^2
+#input = lm object
+#output = r^2 value
+r_squared = function(lm_object) {
+  rss = residual_sum_squares(lm_object)
+  tss = total_sum_squares(lm_object)
+  r2 = 1-(rss/tss)
+  return(r2)
+}

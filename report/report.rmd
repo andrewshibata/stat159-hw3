@@ -2,7 +2,7 @@
 title: "Stat159 Homework 3 Report"
 author: "Andrew Shibata"
 date: "October 14, 2016"
-output: pdf_document
+output: html_document
 ---
 
 ```{r echo=FALSE}
@@ -14,7 +14,7 @@ options(knitr.comment = FALSE)
 #Loading in RData files
 load('../data/all_summary.RData')
 load('../data/regression.RData')
-load('../data/correlation-matrix.RData')
+load('../data/correlation_matrix.RData')
 source('../code/functions/regression-functions.R')
 ```
 
@@ -40,16 +40,22 @@ Additionally, here are the histograms of the distributions:
 ```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
 knitr::include_graphics('../images/histogram-tv.png')
 ```
-
+Histogram of TV Budgets
 
 ```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
 knitr::include_graphics('../images/histogram-radio.png')
 ```
-
+Histogram of Radio Budgets
 
 ```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
 knitr::include_graphics('../images/histogram-newspaper.png')
 ```
+Histogram of Newspaper Budgets
+
+```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
+knitr::include_graphics('../images/histogram-sales.png')
+```
+Histogram of Sales
 
 #Methodology
 
@@ -58,7 +64,7 @@ From Homework 2, looking at the effect of either *TV*, *Radio*, or *Newspaper* o
 
 This follows the form:
 
-$$Sales = \beta_{0} + \beta_{1} TV/Radio/Newspaper$$
+$$Sales = \beta_{0} + \beta_{1}*(TV/Radio/Newspaper)$$
 
 _Mutliple Linear Regression_
 Now, we look at the combined effects of TV, Radio, and Newspaper marketing on Sales so we perform a multiple linear regression model which follows the form:
@@ -66,6 +72,39 @@ Now, we look at the combined effects of TV, Radio, and Newspaper marketing on Sa
 $$Sales = \beta_{0} + \beta_{1}*TV + \beta_{2}*Radio + \beta_{3}*Newspaper$$
 
 #Results
+_Regression of Sales by TV_
+Performing a single regression analysis yields the following coefficients:
+
+```{r,echo=FALSE,results='asis'}
+tv_summary = summary(tv_fit)
+xtable(tv_summary$coefficients, caption = 'Single Regression: Sales ~ TV')
+```
+
+These coefficients represent the slope and the intercept for the least squares regression line. Here are more parameters of the model:
+
+```{r,echo=FALSE, results='asis',message=FALSE}
+tv_table = matrix(nrow = 3, ncol = 2)
+Quantity = c("RSE", "R2", "F-stat")
+tv_values = c(residual_std_error(tv_fit), r_squared(tv_fit), f_statistic(tv_fit))
+tv_table[,1] = Quantity
+tv_table[,2] = tv_values
+colnames(tv_table) = c('Quantity', 'Value')
+xtable(tv_table, caption = "Regression Model Parameters: Sales ~ TV")
+```
+
+The $$R^2$$ and RSE values for this model are small, indicating that linear regression is an appropriate fit for the data.
+
+_Regression of Sales by Radio_
+
+```{r,echo=FALSE, results='asis',message=FALSE}
+radio_table = matrix(nrow = 3, ncol = 2)
+Quantity = c("RSE", "R2", "F-stat")
+radio_values = c(residual_std_error(radio_fit), r_squared(radio_fit), f_statistic(radio_fit))
+radio_table[,1] = Quantity
+radio_table[,2] = radio_values
+colnames(radio_table) = c('Quantity', 'Value')
+xtable(radio_table, caption = "Quality Indices of Regression of Sales on Radio")
+```
 
 
 #Conclusion
