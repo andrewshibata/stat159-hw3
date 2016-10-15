@@ -74,7 +74,7 @@ $$Sales = \beta_{0} + \beta_{1}*TV + \beta_{2}*Radio + \beta_{3}*Newspaper$$
 _Regression of Sales by TV_
 Performing a single regression analysis yields the following coefficients:
 
-```{r,echo=FALSE,results='asis'}
+```{r,echo=FALSE,results='asis',message=FALSE}
 tv_summary = summary(tv_fit)
 xtable(tv_summary$coefficients, caption = 'Single Regression: Sales ~ TV')
 ```
@@ -135,7 +135,7 @@ xtable(radio_table, caption = "Regression Model Parameters: Sales ~ Newspaper")
 For Newspaper the RSE and $$R^2$$ indicate that simple linear regression may not be applicable for the relationship between Sales and Newspaper.
 
 Here is the scatter plot with the least squares regression line:
-```{r,echo=FALSE,out.width='300px',message=FALSE,fig.align='center}
+```{r,echo=FALSE,out.width='300px',message=FALSE,fig.align='center'}
 knitr::include_graphics('../images/scatterplot-newspaper-sales.png')
 ```
 The regression line does not seem to really fit the relationship between Newspaper and Sales so linear regresison may not be appropriate.
@@ -147,7 +147,7 @@ Unlike the 3 examples above, we can perform regression analysis on Sales by all 
 Here are the regression coefficients:
 ```{r,echo=FALSE,results='asis'}
 all_summary = summary(all_fit)
-xtable(all_fit$coefficients, caption = 'Multiple Regression: Sales ~ TV + Radio + Newspaper')
+xtable(all_summary$coefficients, caption = 'Multiple Regression: Sales ~ TV + Radio + Newspaper')
 ```
 
 Here is a corellation matrix:
