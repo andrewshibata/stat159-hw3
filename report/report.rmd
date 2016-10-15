@@ -51,6 +51,19 @@ knitr::include_graphics('../images/histogram-radio.png')
 knitr::include_graphics('../images/histogram-newspaper.png')
 ```
 
+#Methodology
+
+_Single Linear Regression_
+From Homework 2, looking at the effect of either *TV*, *Radio*, or *Newspaper* on *Sales* is a single linear regression in which expected Sales is predicted from a given advertising medium.
+
+This follows the form:
+
+$$Sales = \beta_{0} + \beta_{1} TV/Radio/Newspaper$$
+
+_Mutliple Linear Regression_
+Now, we look at the combined effects of TV, Radio, and Newspaper marketing on Sales so we perform a multiple linear regression model which follows the form:
+
+$$Sales = \beta_{0} + \beta_{1}*TV + \beta_{2}*Radio + \beta_{3}*Newspaper$$
 
 #Results
 
