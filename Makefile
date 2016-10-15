@@ -1,6 +1,6 @@
 .PHONY:data tests eda regression report clean all
 
-all: eda regression report/report.pdf session-info.txt
+all: eda regression report/report.html session-info.txt
 
 data:
 	curl -0 http://www-bcf.usc.edu/~gareth/ISL/Advertising.csv >> data/Advertising.csv
@@ -18,7 +18,7 @@ regression:
 	Rscript code/scripts/regression-script.R data/Advertising.csv
 
 #generates report.pdf or report.html
-report/report.pdf:
+report/report.html:
 	Rscript -e 'library(rmarkdown); render("report/report.Rmd")'
 
 #session-info
