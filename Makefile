@@ -28,3 +28,4 @@ session-info.txt:
 clean:
 	rm -f report/*.pdf
 	rm -f report/*.html
+	rm -f data/*.Rhistory

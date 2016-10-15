@@ -17,7 +17,7 @@ plot(x=advertising$Radio,y=advertising$Sales,main = 'Regression: Sales ~ Radio',
 abline(a=radio_summary$coefficients[1],b=radio_summary$coefficients[2],col='red')
 dev.off()
 
-# Newspaper Info
+# Newspapern Info
 newspaper_fit = lm(Sales~Newspaper, data = advertising)
 newspaper_summary = summary(newspaper_fit)
 png('images/scatterplot-newspaper-sales.png')
