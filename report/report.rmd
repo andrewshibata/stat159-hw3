@@ -27,7 +27,30 @@ Concepts covered by this assignment include performing multiple regression analy
 This report analyzes the effects of different types of advertisement media on the overall sales of of a product. In the last assignment we only looked at the linear regression for Sales by TV, but now we will additionally perform a multiple regression analysis with all 3 advertising factors. 
 
 #Data
-Similarly to Homework 2, this assignment deals with the *Advertising.csv* dataset. It contains information about the advertising budgets for *TV*, *Radio*, and *Newspaper* advertisements as well as the resulting *Sales* in 200 markets. 
+Similarly to Homework 2, this assignment deals with the *Advertising.csv* dataset. It contains information about the advertising budgets for *TV*, *Radio*, and *Newspaper* advertisements as well as the resulting *Sales* in 200 markets.
+
+Here are the summary statistics for the Advertising.csv dataset:
+
+```{r,echo=FALSE,results='asis',message=FALSE}
+xtable(all_summary,caption='Summary Statistics for Advertising.csv')
+```
+
+Additionally, here are the histograms of the distributions:
+
+```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
+knitr::include_graphics('../images/histogram-tv.png')
+```
+
+
+```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
+knitr::include_graphics('../images/histogram-radio.png')
+```
+
+
+```{r,echo=FALSE,out.width='150px',message=FALSE,fig.align='center',eval=T,split=TRUE}
+knitr::include_graphics('../images/histogram-newspaper.png')
+```
+
 
 #Results
 
