@@ -144,5 +144,21 @@ The regression line does not seem to really fit the relationship between Newspap
 
 Unlike the 3 examples above, we can perform regression analysis on Sales by all 3 of TV, Radio, and Newspaper.
 
+Here are the regression coefficients:
+```{r,echo=FALSE,results='asis'}
+all_summary = summary(all_fit)
+xtable(all_fit$coefficients, caption = 'Multiple Regression: Sales ~ TV + Radio + Newspaper')
+```
 
+Here is a corellation matrix:
+```{r,echo=FALSE,results='asis'}
+xtable(correlation_matrix,caption='Correlation Matrix for Advertising.csv')
+```
+
+Here is the qq-plot for the residuals:
+```{r,echo=FALSE,out.width = '300px',message=FALSE,fig.align='center'}
+knitr::include_graphics('../images/normal-qq-plot.png')
+```
 #Conclusion
+
+Multiple linear regression captures the influence of two and three-way effects that single linear regression may not account for.
